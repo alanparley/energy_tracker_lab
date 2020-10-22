@@ -11,29 +11,34 @@
 <script>
 import { GChart } from 'vue-google-charts'
 export default {
+    name: 'energy-chart',
     data(){
         return {
-            chartData: [
-				['Fuel Type', 'Percentage'],
-				['Biomass', 20],
-				['Wind', 30],
-				['Gas', 50]
-			],
 			chartOptions:{
-				chart:{
-					title: 'Company Performance',
-          			subtitle: 'Sales, Expenses, and Profit: 2014-2017',
-				}
+                title: 'UK Energy Mix',
+                width: 1400,
+                height: 700,
+                is3D: true,
 			}
         }
     }, 
     components:{
         GChart
     }, 
-    props: ['fuelData']
+    props: ['fuelData'], 
+    computed:{
+        chartData: function(){
+            let chartData = [['Fuel Type', 'Percentage']];
+            for (const energy of this.fuelData){
+                chartData = [...chartData, [energy.fuel.toUpperCase(), energy.perc]]
+            }
+            return chartData
+        }
+    }
 }
 </script>
 
-<style>
+<style lang="css" scoped>
+
 
 </style>
