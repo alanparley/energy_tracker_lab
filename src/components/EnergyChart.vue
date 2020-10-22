@@ -15,10 +15,21 @@ export default {
     data(){
         return {
 			chartOptions:{
-                title: 'UK Energy Mix',
                 width: 1400,
                 height: 700,
                 is3D: true,
+                backgroundColor: {
+                    stroke: 'black',
+                    strokeWidth: 5,
+                },
+                chartArea:{
+                    width: "75%",
+                    height: "80%"
+                }, 
+                legend:{
+                    position: 'top', 
+                    alignment: 'center'
+                }
 			}
         }
     }, 
@@ -40,5 +51,10 @@ export default {
 
 <style lang="css" scoped>
 
+div{
+    display: flex;
+    justify-content: center;    
+
+}
 
 </style>
