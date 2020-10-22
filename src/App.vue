@@ -2,36 +2,19 @@
 	<div>
 		<h1>Energy Tracker</h1>
 		<energy-list :fuelData='fuelData'></energy-list>
-
-		<GChart
-			type="PieChart"
-			:data="chartData"
-			:options="chartOptions"
-  		/>
+		<energy-chart :fuelData='fuelData'></energy-chart>
 	</div>
 </template>
 
 <script>
 import EnergyMix from './components/EnergyMix.vue';
-import { GChart } from 'vue-google-charts'
+import EnergyChart from './components/EnergyChart.vue'
 
 export default {
 	name: 'app',
 	data(){
 		return {
 			fuelData: [], 
-			chartData: [
-				['Fuel Type', 'Percentage'],
-				['Biomass', 20],
-				['Wind', 30],
-				['Gas', 50]
-			],
-			chartOptions:{
-				chart:{
-					title: 'Company Performance',
-          			subtitle: 'Sales, Expenses, and Profit: 2014-2017',
-				}
-			}
 		}
 	},
 	mounted () {
@@ -41,7 +24,7 @@ export default {
 	}, 
 	components:{
 		"energy-list" : EnergyMix,
-		GChart
+		"energy-chart": EnergyChart
 	}
 }
 
